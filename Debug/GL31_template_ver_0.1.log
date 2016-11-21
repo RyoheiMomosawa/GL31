@@ -1,2 +1,58 @@
-﻿  Number.cpp
-  GL31_template_ver_0.1.vcxproj -> C:\Users\ths40102\Desktop\GL31_template_ver_0.1\Debug\GL31_template_ver_0.1.exe
+﻿  xorshift.cpp
+  wndproc.cpp
+c:\users\tyuka\documents\gl31\resource.h(63): warning C4005: 'ID_STATUSBAR' : マクロが再定義されました。
+          c:\users\tyuka\documents\gl31\wndproc.h(35) : 'ID_STATUSBAR' の前の定義を確認してください
+c:\users\tyuka\documents\gl31\wndproc.cpp(67): warning C4101: 'ps' : ローカル変数は 1 度も使われていません。
+c:\users\tyuka\documents\gl31\wndproc.cpp(78): warning C4101: 'PrntWndRect' : ローカル変数は 1 度も使われていません。
+  Vector3.cpp
+  Title.cpp
+  Texture2DGL.cpp
+  Test_Miyazawa.cpp
+  Sprite.cpp
+  SoundAL.cpp
+c:\users\tyuka\documents\gl31\soundal.cpp(146): warning C4018: '<' : signed と unsigned の数値を比較しようとしました。
+c:\users\tyuka\documents\gl31\soundal.cpp(187): warning C4018: '<' : signed と unsigned の数値を比較しようとしました。
+c:\users\tyuka\documents\gl31\soundal.cpp(217): warning C4018: '<' : signed と unsigned の数値を比較しようとしました。
+c:\users\tyuka\documents\gl31\soundal.cpp(248): warning C4018: '<' : signed と unsigned の数値を比較しようとしました。
+c:\users\tyuka\documents\gl31\soundal.cpp(349): warning C4018: '<' : signed と unsigned の数値を比較しようとしました。
+c:\users\tyuka\documents\gl31\soundal.cpp(351): warning C4018: '<' : signed と unsigned の数値を比較しようとしました。
+c:\users\tyuka\documents\gl31\soundal.cpp(383): warning C4018: '<' : signed と unsigned の数値を比較しようとしました。
+c:\users\tyuka\documents\gl31\soundal.cpp(385): warning C4018: '<' : signed と unsigned の数値を比較しようとしました。
+c:\users\tyuka\documents\gl31\soundal.cpp(417): warning C4018: '<' : signed と unsigned の数値を比較しようとしました。
+c:\users\tyuka\documents\gl31\soundal.cpp(437): warning C4018: '<' : signed と unsigned の数値を比較しようとしました。
+c:\users\tyuka\documents\gl31\soundal.cpp(465): warning C4018: '<' : signed と unsigned の数値を比較しようとしました。
+c:\users\tyuka\documents\gl31\soundal.cpp(489): warning C4018: '<' : signed と unsigned の数値を比較しようとしました。
+c:\users\tyuka\documents\gl31\soundal.cpp(518): warning C4018: '<' : signed と unsigned の数値を比較しようとしました。
+c:\users\tyuka\documents\gl31\soundal.cpp(543): warning C4018: '<' : signed と unsigned の数値を比較しようとしました。
+c:\users\tyuka\documents\gl31\soundal.cpp(571): warning C4018: '<' : signed と unsigned の数値を比較しようとしました。
+  SceneGLTimer.cpp
+c:\users\tyuka\documents\gl31\scenegltimer.cpp(62): warning C4101: 'digit' : ローカル変数は 1 度も使われていません。
+c:\users\tyuka\documents\gl31\scenegltimer.cpp(160): warning C4244: '=' : 'long double' から 'int' への変換です。データが失われる可能性があります。
+c:\users\tyuka\documents\gl31\scenegltimer.cpp(369): warning C4244: '=' : 'long double' から 'int' への変換です。データが失われる可能性があります。
+  SceneGL.cpp
+  Scene2DGL.cpp
+  Result.cpp
+  RendererGL.cpp
+  QPCounter.cpp
+c:\users\tyuka\documents\gl31\qpcounter.cpp(254): warning C4244: '=' : 'LONGLONG' から 'DWORD' への変換です。データが失われる可能性があります。
+  Number.cpp
+  MousePointer.cpp
+  Mode.cpp
+  Manager.cpp
+  main.cpp
+c:\users\tyuka\documents\gl31\resource.h(63): warning C4005: 'ID_STATUSBAR' : マクロが再定義されました。
+          c:\users\tyuka\documents\gl31\wndproc.h(35) : 'ID_STATUSBAR' の前の定義を確認してください
+  Input.cpp
+  コードを生成中...
+  コンパイル中...
+  ImageTGA.cpp
+  Game.cpp
+  Fade.cpp
+  DirectInput.cpp
+  DIMouse.cpp
+  DIKeyboard.cpp
+  Dialog.cpp
+  Color.cpp
+  コードを生成中...
+  LINK : 前回のインクリメンタル リンクで C:\Users\tyuka\Documents\GL31\Debug\GL31_template_ver_0.1.exe が見つからなかったか、ビルドされませんでした。フル リンクを行います。
+  GL31_template_ver_0.1.vcxproj -> C:\Users\tyuka\Documents\GL31\Debug\GL31_template_ver_0.1.exe

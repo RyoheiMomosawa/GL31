@@ -42,6 +42,7 @@
     <ClInclude Include="SceneGLTimer.h" />
     <ClInclude Include="SoundAL.h" />
     <ClInclude Include="Sprite.h" />
+    <ClInclude Include="Test_Miyazawa.h" />
     <ClInclude Include="Texture2DGL.h" />
     <ClInclude Include="Title.h" />
     <ClInclude Include="Vector3.h" />
@@ -71,6 +72,7 @@
     <ClCompile Include="SceneGLTimer.cpp" />
     <ClCompile Include="SoundAL.cpp" />
     <ClCompile Include="Sprite.cpp" />
+    <ClCompile Include="Test_Miyazawa.cpp" />
     <ClCompile Include="Texture2DGL.cpp" />
     <ClCompile Include="Title.cpp" />
     <ClCompile Include="Vector3.cpp" />
