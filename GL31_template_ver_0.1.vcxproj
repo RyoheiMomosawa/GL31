@@ -28,6 +28,7 @@
     <ClInclude Include="Game.h" />
     <ClInclude Include="ImageTGA.h" />
     <ClInclude Include="Input.h" />
+    <ClInclude Include="kouno.h" />
     <ClInclude Include="main.h" />
     <ClInclude Include="Manager.h" />
     <ClInclude Include="Mode.h" />
@@ -58,6 +59,7 @@
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="ImageTGA.cpp" />
     <ClCompile Include="Input.cpp" />
+    <ClCompile Include="kouno.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Manager.cpp" />
     <ClCompile Include="Mode.cpp" />
@@ -93,7 +95,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v120</PlatformToolset>
+    <PlatformToolset>v140</PlatformToolset>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
