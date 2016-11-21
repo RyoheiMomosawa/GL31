@@ -1,0 +1,24 @@
+﻿  Color.cpp
+  Game.cpp
+  main.cpp
+c:\users\ryohay.momosawa\documents\test\resource.h(63): warning C4005: 'ID_STATUSBAR': マクロが再定義されました。
+  c:\users\ryohay.momosawa\documents\test\wndproc.h(35): note: 'ID_STATUSBAR' の以前の定義を確認してください
+main.cpp(128): error C2440: '初期化中': 'const char [12]' から 'LPCWSTR' に変換できません。
+  main.cpp(128): note: 指示された型は関連がありません。変換には reinterpret_cast、C スタイル キャストまたは関数スタイルのキャストが必要です。
+main.cpp(166): error C2664: 'HWND CreateWindowExW(DWORD,LPCWSTR,LPCWSTR,DWORD,int,int,int,int,HWND,HMENU,HINSTANCE,LPVOID)': 引数 2 を 'const char [12]' から 'LPCWSTR' へ変換できません。
+  main.cpp(166): note: 指示された型は関連がありません。変換には reinterpret_cast、C スタイル キャストまたは関数スタイルのキャストが必要です。
+main.cpp(251): error C2664: 'BOOL UnregisterClassW(LPCWSTR,HINSTANCE)': 引数 1 を 'const char [12]' から 'LPCWSTR' へ変換できません。
+  main.cpp(251): note: 指示された型は関連がありません。変換には reinterpret_cast、C スタイル キャストまたは関数スタイルのキャストが必要です。
+  Manager.cpp
+  SceneGL.cpp
+SceneGL.cpp(100): error C2664: 'int MessageBoxW(HWND,LPCWSTR,LPCWSTR,UINT)': 引数 2 を 'const char [25]' から 'LPCWSTR' へ変換できません。
+  SceneGL.cpp(100): note: 指示された型は関連がありません。変換には reinterpret_cast、C スタイル キャストまたは関数スタイルのキャストが必要です。
+  SceneGLTimer.cpp
+SceneGLTimer.cpp(62): warning C4101: 'digit': ローカル変数は 1 度も使われていません。
+SceneGLTimer.cpp(160): warning C4244: '=': 'long double' から 'int' への変換です。データが失われる可能性があります。
+SceneGLTimer.cpp(369): warning C4244: '=': 'long double' から 'int' への変換です。データが失われる可能性があります。
+  wndproc.cpp
+c:\users\ryohay.momosawa\documents\test\resource.h(63): warning C4005: 'ID_STATUSBAR': マクロが再定義されました。
+  c:\users\ryohay.momosawa\documents\test\wndproc.h(35): note: 'ID_STATUSBAR' の以前の定義を確認してください
+wndproc.cpp(106): error C2664: 'int MessageBoxW(HWND,LPCWSTR,LPCWSTR,UINT)': 引数 2 を 'const char [23]' から 'LPCWSTR' へ変換できません。
+  wndproc.cpp(106): note: 指示された型は関連がありません。変換には reinterpret_cast、C スタイル キャストまたは関数スタイルのキャストが必要です。

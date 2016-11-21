@@ -111,7 +111,6 @@ void Game::Uninit()
 {
 	/* ƒV[ƒ“‚Ìíœ */
 	m_pScene->UninitAll();
-
 }
 
 
