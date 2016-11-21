@@ -3,6 +3,9 @@
 *.lo
 *.o
 *.obj
+*.vcxproj
+*.db
+*.aps
 
 # Precompiled Headers
 *.gch
@@ -21,6 +24,7 @@
 *.la
 *.a
 *.lib
+*.dll
 
 # Executables
 *.exe
