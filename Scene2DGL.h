@@ -50,15 +50,18 @@ public:
 	void Draw(); // •`‰æ
 	static Scene2DGL *Create();
 
-
 	// Set,Get
 
 
 	// Delete
 
 
+	// Update Fix
+	void UpdateAnimation();
+
+
 protected:
-// ƒƒ“ƒo•Ï”
+	// ƒƒ“ƒo•Ï”
 
 
 private:

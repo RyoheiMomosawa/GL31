@@ -52,6 +52,10 @@ SceneGL::SceneGL( int Priority )
 	m_Obj3d.depth = 0.0f;
 	m_Obj3d.length2D = m_Obj3d.length3D = 0.0f;
 	m_Obj3d.bUse = m_Obj3d.bUpdate = m_Obj3d.bDraw = false;
+	m_Obj3d.anim.fPattern_X = m_Obj3d.anim.fPattern_Y = 1.0f;
+	m_Obj3d.anim.fAnimWidth = m_Obj3d.anim.fAnimHeight = 1.0f;
+	m_Obj3d.anim.nChangeTimming = 1;
+
 	m_Obj3d.movestate = MOVESTATE_NONE;
 	m_bCreate = false;
 	m_pTexPath = NULL;
@@ -469,6 +473,8 @@ void SceneGL::SetAnimation( int ChangeTim, float PatternX, float PatternY )
 	m_Obj3d.anim.nChangeTimming = ChangeTim;
 	m_Obj3d.anim.fPattern_X = PatternX;
 	m_Obj3d.anim.fPattern_Y = PatternY;
+	m_Obj3d.anim.fAnimWidth = 1.0f / ( m_Obj3d.anim.fPattern_X / m_Obj3d.anim.fPattern_Y );
+	m_Obj3d.anim.fAnimHeight = 1.0f / m_Obj3d.anim.fPattern_Y;
 
 }
 

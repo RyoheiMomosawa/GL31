@@ -80,7 +80,8 @@ void Game::Init()
 
 	// オブジェクト
 	m_pScene = Scene2DGL::Create();
-	m_pScene->SetTexture( "./data/TEXTURE/test.tga" );
+	m_pScene->SetTexture( "./data/TEXTURE/runningman101.tga" );
+	m_pScene->SetAnimation( 5, 5, 2 );
 	m_pScene->SetParam( &Vector3( 100.0f, 100.0f, 0.0f ), SCENEPARAM_SIZE );
 	m_pScene->SetParam( &Vector3( ( float )SCREEN_WIDTH * 0.5f, ( float )SCREEN_HEIGHT * 0.5f, 0.0f ), SCENEPARAM_POS );
 

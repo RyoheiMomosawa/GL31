@@ -1,2 +1,6 @@
 #TargetFrameworkVersion=v4.0:PlatformToolSet=v140:EnableManagedIncrementalBuild=false:VCToolArchitecture=Native32Bit:WindowsTargetPlatformVersion=8.1
+<<<<<<< HEAD
 Debug|Win32|C:\GL31_team_creation\|
+=======
+Debug|Win32|C:\Users\ths40102\Documents\GitHub\GL31\|
+>>>>>>> 0ee2a5eb787c8e15705687c248865ad7433c22af

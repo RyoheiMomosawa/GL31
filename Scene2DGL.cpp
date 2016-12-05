@@ -132,16 +132,16 @@ void Scene2DGL::Draw()
 	glBegin( GL_TRIANGLE_STRIP );
 
 	glColor4f( 1.0f, 1.0f, 1.0f, 1.0f );
-	glTexCoord2f( 0.0f, 0.0f );
+	glTexCoord2f( m_Obj3d.anim.nPosPatternAnim_X * m_Obj3d.anim.fAnimWidth, m_Obj3d.anim.nPosPatternAnim_Y * m_Obj3d.anim.fAnimHeight );
 	glVertex2d( m_Obj3d.pos.x - m_Obj3d.width * 0.5f, m_Obj3d.pos.y + m_Obj3d.height * 0.5f );
 	
-	glTexCoord2f( 1.0f, 0.0f );
+	glTexCoord2f( m_Obj3d.anim.nPosPatternAnim_X * m_Obj3d.anim.fAnimWidth + m_Obj3d.anim.fAnimWidth, m_Obj3d.anim.nPosPatternAnim_Y * m_Obj3d.anim.fAnimHeight );
 	glVertex2d( m_Obj3d.pos.x + m_Obj3d.width * 0.5f, m_Obj3d.pos.y + m_Obj3d.height * 0.5f );
 
-	glTexCoord2f( 0.0f, 1.0f );
+	glTexCoord2f( m_Obj3d.anim.nPosPatternAnim_X * m_Obj3d.anim.fAnimWidth, m_Obj3d.anim.nPosPatternAnim_Y * m_Obj3d.anim.fAnimHeight + m_Obj3d.anim.fAnimHeight );
 	glVertex2d( m_Obj3d.pos.x - m_Obj3d.width * 0.5f, m_Obj3d.pos.y - m_Obj3d.height * 0.5f );
 
-	glTexCoord2f( 1.0f, 1.0f );
+	glTexCoord2f( m_Obj3d.anim.nPosPatternAnim_X * m_Obj3d.anim.fAnimWidth + m_Obj3d.anim.fAnimWidth, m_Obj3d.anim.nPosPatternAnim_Y * m_Obj3d.anim.fAnimHeight + m_Obj3d.anim.fAnimHeight );
 	glVertex2d( m_Obj3d.pos.x + m_Obj3d.width * 0.5f, m_Obj3d.pos.y - m_Obj3d.height * 0.5f );
 
 	glEnd();
@@ -181,6 +181,25 @@ Scene2DGL *Scene2DGL::Create()
 	}
 
 	else return p;
+
+}
+
+
+/******************************************************************************
+**	ä÷êîñº: UpdateAnimetion
+**	ä÷êîÇÃäTóv
+**	à¯êî  : void
+**	ñﬂÇËíl: void
+**	ê‡ñæ  :
+******************************************************************************/
+void Scene2DGL::UpdateAnimation()
+{
+	for( m_Obj3d.anim.nCounterAnim++;
+		m_Obj3d.anim.nCounterAnim == m_Obj3d.anim.nChangeTimming;
+		m_Obj3d.anim.nPosPatternAnim_Y += ( m_Obj3d.anim.nPosPatternAnim_X + 1 == m_Obj3d.anim.fPattern_X ),
+		m_Obj3d.anim.nPosPatternAnim_X = ( m_Obj3d.anim.nPosPatternAnim_X + 1 ) % ( int )m_Obj3d.anim.fPattern_X,
+		m_Obj3d.anim.nPosPatternAnim_Y = ( m_Obj3d.anim.nPosPatternAnim_Y + 1 ) % ( int )m_Obj3d.anim.fPattern_Y,
+		m_Obj3d.anim.nCounterAnim = 0 );
 
 }
 
