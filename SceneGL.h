@@ -99,8 +99,8 @@ class SceneGL
 	OBJECT3D* GetObject3D();
 	void SetObject3D( OBJECT3D );
 	bool SetTexture( const char *pFilePath );
-	void SetParam( float *x, float *y, float *z, SCENEPARAM ParamName );
-	void SetParam( Vector3 *, SCENEPARAM ParamName );
+	virtual void SetParam( float *x, float *y, float *z, SCENEPARAM ParamName );
+	virtual void SetParam( Vector3 *, SCENEPARAM ParamName );
 	void SetColor( float *r, float *g, float *b, float *a );
 	void SetColor( Color * );
 	void SetAnimation( int ChangeTim, float PatternX, float PatternY );

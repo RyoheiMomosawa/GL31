@@ -50,8 +50,13 @@ public:
 	void Draw(); // •`‰æ
 	static Scene2DGL *Create();
 
-	// Set,Get
+	void AddRot(float z)			{ m_Obj3d.rot.z += z; }
+	void AddPos(float x, float y)	{ AddPos(Vector3(x, y, 0.0f)); }
+	void AddPos(const Vector3& v)	{ m_Obj3d.pos += v; }
 
+	// Set,Get
+	void SetParam(float *x, float *y, float *z, SCENEPARAM ParamName);
+	void SetParam(Vector3 *, SCENEPARAM ParamName);
 
 	// Delete
 

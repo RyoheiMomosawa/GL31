@@ -35,6 +35,7 @@
 ******************************************************************************/
 class SceneGL;
 class SceneGLTimer;
+class Player;
 class Game : public Mode
 {
 public:
@@ -58,6 +59,8 @@ private:
 	SceneGL *m_pScene;
 	// タイマー
 	static SceneGLTimer *m_pTimer;
+
+	Player* m_pPlayer[2];
 
 };
 
