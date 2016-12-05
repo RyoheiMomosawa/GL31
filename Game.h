@@ -35,6 +35,8 @@
 ******************************************************************************/
 class SceneGL;
 class SceneGLTimer;
+class Server;
+class Client;
 class Game : public Mode
 {
 public:

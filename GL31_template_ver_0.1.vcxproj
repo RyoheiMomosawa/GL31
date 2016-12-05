@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Client.h" />
     <ClInclude Include="Color.h" />
     <ClInclude Include="Dialog.h" />
     <ClInclude Include="DIKeyboard.h" />
@@ -41,15 +42,18 @@
     <ClInclude Include="Scene2DGL.h" />
     <ClInclude Include="SceneGL.h" />
     <ClInclude Include="SceneGLTimer.h" />
+    <ClInclude Include="Server.h" />
     <ClInclude Include="SoundAL.h" />
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="Texture2DGL.h" />
     <ClInclude Include="Title.h" />
     <ClInclude Include="Vector3.h" />
+    <ClInclude Include="WindowsSocketService.h" />
     <ClInclude Include="wndproc.h" />
     <ClInclude Include="xorshift.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Client.cpp" />
     <ClCompile Include="Color.cpp" />
     <ClCompile Include="Dialog.cpp" />
     <ClCompile Include="DIKeyboard.cpp" />
@@ -71,11 +75,13 @@
     <ClCompile Include="Scene2DGL.cpp" />
     <ClCompile Include="SceneGL.cpp" />
     <ClCompile Include="SceneGLTimer.cpp" />
+    <ClCompile Include="Server.cpp" />
     <ClCompile Include="SoundAL.cpp" />
     <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="Texture2DGL.cpp" />
     <ClCompile Include="Title.cpp" />
     <ClCompile Include="Vector3.cpp" />
+    <ClCompile Include="WindowsSocketService.cpp" />
     <ClCompile Include="wndproc.cpp" />
     <ClCompile Include="xorshift.cpp" />
   </ItemGroup>

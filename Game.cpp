@@ -21,6 +21,12 @@
 #include "wndproc.h"
 
 
+// ネットワーク
+#include "WindowsSocketService.h"
+#include "Server.h"
+#include "Client.h"
+
+
 // ゲームオブジェクト
 #include "SceneGL.h"
 #include "Scene2DGL.h"
@@ -71,6 +77,9 @@ Game::~Game()
 ******************************************************************************/
 void Game::Init()
 {
+	// ネットワークの初期化
+	WindowsSocketService::Init();
+
 	// シーンの作成
 	// 背景
 	m_pScene = Scene2DGL::Create();
@@ -112,6 +121,9 @@ void Game::Uninit()
 {
 	/* シーンの削除 */
 	m_pScene->UninitAll();
+
+	// ネットワークの終了
+	WindowsSocketService::Uninit();
 
 }
 
