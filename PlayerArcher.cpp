@@ -38,7 +38,8 @@
 PlayerArcher::PlayerArcher()
 {
 	m_pScene = NULL;
-	m_hp = 100;
+	m_Hp = 100;
+	m_Forward_direction = 0.0f;
 }
 
 
@@ -158,21 +159,25 @@ void PlayerArcher::Move()
 
 	if(Manager::GetKeyboard()->GetPress(DIK_A))
 	{
+		m_Forward_direction = 3.14 * -0.5f;
 		m_pScene->AddPos(-2, 0);
 	}
 
 	if(Manager::GetKeyboard()->GetPress(DIK_D))
 	{
+		m_Forward_direction = 3.14 * 0.5f;
 		m_pScene->AddPos(2, 0);
 	}
 
 	if(Manager::GetKeyboard()->GetPress(DIK_W))
 	{
+		m_Forward_direction = 3.14 * 1.0f;
 		m_pScene->AddPos(0, -2);
 	}
 
 	if(Manager::GetKeyboard()->GetPress(DIK_S))
 	{
+		m_Forward_direction = 3.14 * 0.0f;
 		m_pScene->AddPos(0, 2);
 	}
 }

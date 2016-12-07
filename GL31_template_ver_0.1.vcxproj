@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="CharaSelect.h" />
     <ClInclude Include="Color.h" />
     <ClInclude Include="Dialog.h" />
     <ClInclude Include="DIKeyboard.h" />
@@ -54,6 +55,7 @@
     <ClInclude Include="xorshift.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="CharaSelect.cpp" />
     <ClCompile Include="Color.cpp" />
     <ClCompile Include="Dialog.cpp" />
     <ClCompile Include="DIKeyboard.cpp" />

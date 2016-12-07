@@ -55,6 +55,7 @@ protected:
 	// ƒƒ“ƒo•Ï”
 	Scene2DGL *m_pScene;
 
-	int m_hp;
+	int m_Hp;
+	float m_Forward_direction;
 };
 
