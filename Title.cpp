@@ -20,7 +20,8 @@
 
 // システム
 #include "Manager.h"
-#include "Game.h"
+//#include "Game.h"
+#include "CharaSelect.h"
 #include "main.h"
 #include "Fade.h"
 
@@ -104,7 +105,7 @@ void Title::Update()
 	// モードの切り替え
 	if( Manager::GetKeyboard()->GetTrigger( DIK_RETURN ) && !m_bModeFlag )
 	{
-		Fade::Set( new Game );
+		Fade::Set( new CharaSelect );
 		m_bModeFlag = true;
 			
 	}

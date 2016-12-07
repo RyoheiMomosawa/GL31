@@ -27,6 +27,9 @@
 #include "DIKeyboard.h"
 #include "SceneGLTimer.h"
 
+#include "PlayerArcher.h"
+#include "PlayerNinjya.h"
+#include "PlayerSamurai.h"
 
 // デバッグ処理
 #include "WndProcDbgManager.h"
@@ -80,7 +83,8 @@ void Game::Init()
 
 	// オブジェクト
 	m_pScene = Scene2DGL::Create();
-	m_pScene->SetTexture( "./data/TEXTURE/test.tga" );
+	m_pScene->SetTexture( "./data/TEXTURE/runningman101.tga" );
+	m_pScene->SetAnimation( 5, 5, 2 );
 	m_pScene->SetParam( &Vector3( 100.0f, 100.0f, 0.0f ), SCENEPARAM_SIZE );
 	m_pScene->SetParam( &Vector3( ( float )SCREEN_WIDTH * 0.5f, ( float )SCREEN_HEIGHT * 0.5f, 0.0f ), SCENEPARAM_POS );
 
@@ -94,6 +98,13 @@ void Game::Init()
 	m_pTimer->SetParam( &Vector3( 150.0f, 80.0f, 0.0f ), SCENEPARAM_POS );
 	m_pTimer->SetParam( &Vector3( 50.0f, 70.0f, 0.0f ), SCENEPARAM_SIZE );
 	m_pTimer->Reset();
+
+	//ここで、選択されたプレイヤーを　生成する
+	m_pPlayer[0] = new PlayerSamurai;
+	m_pPlayer[0]->Init(0);
+
+	m_pPlayer[1] = new PlayerNinjya;
+	m_pPlayer[1]->Init(1);
 
 	m_pScene->InitAll();
 
@@ -124,6 +135,9 @@ void Game::Uninit()
 ******************************************************************************/
 void Game::Update()
 {
+	m_pPlayer[0]->Update();
+	m_pPlayer[1]->Update();
+
 	// シーンの更新
 	m_pScene->UpdateAll();
 

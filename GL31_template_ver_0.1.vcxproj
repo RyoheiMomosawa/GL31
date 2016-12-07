@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="CharaSelect.h" />
     <ClInclude Include="Color.h" />
     <ClInclude Include="Dialog.h" />
     <ClInclude Include="DIKeyboard.h" />
@@ -34,6 +35,10 @@
     <ClInclude Include="Mode.h" />
     <ClInclude Include="MousePointer.h" />
     <ClInclude Include="Number.h" />
+    <ClInclude Include="Player.h" />
+    <ClInclude Include="PlayerArcher.h" />
+    <ClInclude Include="PlayerNinjya.h" />
+    <ClInclude Include="PlayerSamurai.h" />
     <ClInclude Include="QPCounter.h" />
     <ClInclude Include="RendererGL.h" />
     <ClInclude Include="resource.h" />
@@ -50,6 +55,7 @@
     <ClInclude Include="xorshift.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="CharaSelect.cpp" />
     <ClCompile Include="Color.cpp" />
     <ClCompile Include="Dialog.cpp" />
     <ClCompile Include="DIKeyboard.cpp" />
@@ -65,6 +71,9 @@
     <ClCompile Include="Mode.cpp" />
     <ClCompile Include="MousePointer.cpp" />
     <ClCompile Include="Number.cpp" />
+    <ClCompile Include="PlayerArcher.cpp" />
+    <ClCompile Include="PlayerNinjya.cpp" />
+    <ClCompile Include="PlayerSamurai.cpp" />
     <ClCompile Include="QPCounter.cpp" />
     <ClCompile Include="RendererGL.cpp" />
     <ClCompile Include="Result.cpp" />
@@ -157,10 +166,12 @@
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <AdditionalIncludeDirectories>C:\GL31_team_creation\OpenAL;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>C:\GL31_team_creation\OpenAL;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -187,12 +198,14 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>C:\GL31_team_creation\OpenAL;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>C:\GL31_team_creation\OpenAL;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
