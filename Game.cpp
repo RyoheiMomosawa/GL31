@@ -4,7 +4,7 @@
 **	作成者    : AT-13B-284 出席番号 14 木村 祥貴
 **	作成日    : 2016/7/19
 **	修正日	　: //
-********************************************************************************/
+******************************************************************************/
 
 /******************************************************************************
 **	インクルードファイル
@@ -21,17 +21,12 @@
 #include "wndproc.h"
 
 
-// ネットワーク
-#include "WindowsSocketService.h"
-#include "Server.h"
-#include "Client.h"
-
-
 // ゲームオブジェクト
 #include "SceneGL.h"
 #include "Scene2DGL.h"
 #include "DIKeyboard.h"
 #include "SceneGLTimer.h"
+#include "SceneTestPlayer.h"
 
 
 // デバッグ処理
@@ -45,7 +40,7 @@ SceneGLTimer *Game::m_pTimer;
 
 
 /******************************************************************************
-**	関数名:
+**	関数名: Game
 **		関数の概要
 **	引数  : void
 **	戻り値: void
@@ -57,7 +52,7 @@ Game::Game()
 
 
 /******************************************************************************
-**	関数名: ~
+**	関数名: ~Game
 **		関数の概要
 **	引数  : void
 **	戻り値: void
@@ -77,9 +72,6 @@ Game::~Game()
 ******************************************************************************/
 void Game::Init()
 {
-	// ネットワークの初期化
-	WindowsSocketService::Init();
-
 	// シーンの作成
 	// 背景
 	m_pScene = Scene2DGL::Create();
@@ -93,6 +85,12 @@ void Game::Init()
 	m_pScene->SetAnimation( 5, 5, 2 );
 	m_pScene->SetParam( &Vector3( 100.0f, 100.0f, 0.0f ), SCENEPARAM_SIZE );
 	m_pScene->SetParam( &Vector3( ( float )SCREEN_WIDTH * 0.5f, ( float )SCREEN_HEIGHT * 0.5f, 0.0f ), SCENEPARAM_POS );
+
+	// テストプレイヤー
+	m_pScene = SceneTestPlayer::Create();
+	m_pScene->SetTexture( "./data/TEXTURE/test.tga" );
+	m_pScene->SetParam( &Vector3( 50.0f, 50.0f, 0.0f ), SCENEPARAM_POS );
+	m_pScene->SetParam( &Vector3( 50.0f, 50.0f, 0.0f ), SCENEPARAM_SIZE );
 
 	// タイマー
 	m_pTimer = SceneGLTimer::Create();
@@ -121,9 +119,6 @@ void Game::Uninit()
 {
 	/* シーンの削除 */
 	m_pScene->UninitAll();
-
-	// ネットワークの終了
-	WindowsSocketService::Uninit();
 
 }
 

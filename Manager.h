@@ -23,6 +23,7 @@
 #include "DIKeyboard.h"
 #include "DIMouse.h"
 #include "SoundAL.h"
+#include "WindowsSocketService.h"
 
 
 /******************************************************************************
@@ -46,6 +47,8 @@ class RendererGL;
 class SceneGL;
 class Mode;
 class Fade;
+class Server;
+class Client;
 class Manager
 {
 public:
@@ -64,6 +67,7 @@ public:
 	static input::DirectInput *GetKeyboard();
 	static input::DIMouse *GetMouse();
 	static void SetMode( Mode *Mode );
+	static Client *GetClient();
 
 
 	// メンバ変数
@@ -86,6 +90,10 @@ private:
 
 	// BGMデータ
 	static ALuint m_bgm001ID;
+
+	static Client *m_pReceive;
+	static HANDLE m_hClient;
+	static unsigned int m_thClient;
 
 };
 

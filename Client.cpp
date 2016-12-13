@@ -134,10 +134,13 @@ unsigned int __stdcall Client::Send( void *p )
 		{
 
 			addressLen = sizeof( sockaddr_in );
-			m_Len = strnlen_s( m_Buffer, MAX_PATH );
-			sendto( m_Socket, m_Buffer, strlen( m_Buffer ) + 1, 0, ( SOCKADDR* )&m_Addrin, sizeof SOCKADDR_IN );
+			//m_Len = strnlen_s( m_Buffer, MAX_PATH );
+			sendto( m_Socket, m_Buffer, MAX_PATH, 0, ( SOCKADDR* )&m_Addrin, sizeof SOCKADDR_IN );
+			int error = WSAGetLastError();
 			//recvfrom( m_Socket, m_Buffer, MAX_PATH, 0, ( sockaddr* )&addressClient, &addressLen );
 			//memset( szBufSend, '\0', MAX_PATH );
+
+			//Sleep( 1000 );
 
 			bSendingFlag = false;
 
@@ -178,7 +181,7 @@ void Client::Uninit()
 ******************************************************************************/
 void Client::SetIPAdress( char *pStr )
 {
-	strcpy_s( m_IP, MAX_PATH, pStr );
+	strcpy_s( m_IP, MAX_PATH - 1, pStr );
 	m_bInitFlagIP = true;
 
 }
@@ -267,6 +270,7 @@ void Client::SetSendData( char *pData, int buffer )
 	memset( m_Buffer, '\0', MAX_PATH );
 	memcpy_s( m_Buffer, MAX_PATH, pData, buffer );
 	bSendingFlag = true;
+	m_Len = buffer;
 
 }
 

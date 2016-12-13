@@ -25,6 +25,11 @@
 #include "SceneGLTimer.h"
 
 
+// ネットワーク
+#include "Server.h"
+#include "Client.h"
+
+
 // システム
 #include "wndproc.h"
 #include "main.h"
@@ -41,6 +46,10 @@ SoundAL *Manager::m_pSound;
 Mode *Manager::m_pMode;
 Fade *Manager::m_pFade;
 ALuint Manager::m_bgm001ID;
+
+Client *Manager::m_pReceive;
+HANDLE Manager::m_hClient;
+unsigned int Manager::m_thClient;
 
 
 /******************************************************************************
@@ -76,6 +85,15 @@ Manager::~Manager()
 ******************************************************************************/
 HRESULT Manager::Init( HINSTANCE hInstance, HWND hWnd, BOOL bWindow )
 {
+	// ネットワークの初期化
+	WindowsSocketService::Init();
+	m_pReceive = new Client;
+	m_pReceive->SetIPAdress( "172.29.9.74" );
+	m_pReceive->SetPortNo( 11451 );
+	m_pReceive->SetBufferSize( MAX_PATH );
+	m_pReceive->Init();
+	m_hClient = ( HANDLE )_beginthreadex( NULL, 0, m_pReceive->Send, NULL, 0, &m_thClient );
+
 	// レンダラーの作成
 	m_pRenderer = new RendererGL;
 	if( FAILED( m_pRenderer->Init( hInstance, hWnd, bWindow ) ) )
@@ -107,7 +125,7 @@ HRESULT Manager::Init( HINSTANCE hInstance, HWND hWnd, BOOL bWindow )
 	// モードの作成 //////////////////////
 	m_pFade = new Fade;
 	m_pFade->Init();
-	Fade::Set( new Title );
+	Fade::Set( new Game );
 
 
 	/**** 処理終了時にS_OKを返す ****/
@@ -130,6 +148,12 @@ int Manager::Uninit()
 	m_pFade->Uninit();
 	delete m_pFade;
 	m_pFade = NULL;
+
+
+	// ネットワークの終了
+	CloseHandle( m_hClient );
+	delete m_pReceive;
+	WindowsSocketService::Uninit();
 
 
 	// サウンド
@@ -222,7 +246,7 @@ void Manager::Draw()
 	UpdateStatusBar();
 
 	// サウンド再生
-	m_pSound->PlaySoundAll();
+//	m_pSound->PlaySoundAll();
 
 }
 
@@ -280,6 +304,20 @@ void Manager::SetMode( Mode *Mode )
 		m_pMode->Init();
 
 	}
+
+}
+
+
+/******************************************************************************
+**	関数名: GetClient
+**	関数の概要
+**	引数  : void
+**	戻り値: Client *
+**	説明  :
+******************************************************************************/
+Client *Manager::GetClient()
+{
+	return m_pReceive;
 
 }
 
