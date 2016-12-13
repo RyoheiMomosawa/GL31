@@ -38,19 +38,25 @@
 class CObject2D
 {
 public :
-	typedef enum
-	{
-		TEXTURE_INDEX_0 = 0,
-		TEXTURE_INDEX_1,
-		TEXTURE_INDEX_MAX		// テクスチャ目録最大数
-	}TEXTURE_INDEX;	// テクスチャ目録
-	typedef enum
-	{
-		POSITION = 0,			// 座標
-		ROTATION,				// 回転
-		SIZE,					// サイズ
-		PARAMETER_TPEY_MAX_NUM	// パラメータータイプ最大数
-	}PARAMETER_TYPE;
+	///////////////////////////////////////////////////////////////////////////
+	// テクスチャ目録
+	///////////////////////////////////////////////////////////////////////////
+		typedef enum
+		{
+			TEXTURE_INDEX_0 = 0,
+			TEXTURE_INDEX_1,
+			TEXTURE_INDEX_MAX		// テクスチャ目録最大数
+		}TEXTURE_INDEX;	// テクスチャ目録
+	///////////////////////////////////////////////////////////////////////////
+	// パラメータータイプ 
+	///////////////////////////////////////////////////////////////////////////
+		typedef enum
+		{
+			POSITION = 0,			// 座標
+			ROTATION,				// 回転
+			SIZE,					// サイズ
+			PARAMETER_TPEY_MAX_NUM	// パラメータータイプ最大数
+		}PARAMETER_TYPE; 
 
 	CObject2D();	// コンストラクタ
 	~CObject2D();	// デストラクタ
@@ -76,12 +82,19 @@ public :
 	// 全て描画処理
 	static void DrawAll(void);
 
-	//  当たり判定
-	bool CollisionDetection( Vector3 *Position);
-	bool SphereAndSphereDetection(Vector3 PositionObj1, Vector3 SizeObj1, Vector3 PositionObj2, Vector3 SizeObj2);
+	//////////////////////////////////////////////////////////////////////////////
+	//	当たり判定
+	//////////////////////////////////////////////////////////////////////////////
+		// 指定した座標の四角形の当たり判定
+		bool CollisionDetection( Vector3 *Position);
+		// 球と球の当たり判定
+		bool SphereAndSphereDetection(Vector3 PositionObj1, Vector3 SizeObj1, Vector3 PositionObj2, Vector3 SizeObj2);
 
-	// パラメーター設定
-	void SetParameter( PARAMETER_TYPE type, Vector3 *parameter);
+	//////////////////////////////////////////////////////////////////////////////
+	//	パラメーター設定
+	//////////////////////////////////////////////////////////////////////////////
+		// パラメーター設定
+		void SetParameter( PARAMETER_TYPE type, Vector3 *parameter);
 
 
 private:

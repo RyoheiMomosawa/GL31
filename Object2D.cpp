@@ -36,9 +36,9 @@
 CObject2D *CObject2D::m_TopAddress = NULL;
 //	現在アドレス
 CObject2D *CObject2D::m_CurrentAddress = NULL;
-// 
+// テクスチャ目録
 int CObject2D::m_Texture[CObject2D::TEXTURE_INDEX_MAX] = { NULL };
-//
+// テクスチャパス
 char *CObject2D::m_pTexPath[CObject2D::TEXTURE_INDEX_MAX] = { NULL };
 
 /******************************************************************************
@@ -51,10 +51,10 @@ char *CObject2D::m_pTexPath[CObject2D::TEXTURE_INDEX_MAX] = { NULL };
 ******************************************************************************/
 
 ///////////////////////////////////////////////////////////////////////////////
-//	関数名	: 
-//	戻り値	: 
-//	引数	: 
-//	説明	: 
+//	関数名	: CObject2D::CObject2D()
+//	戻り値	: なし
+//	引数	: なし
+//	説明	: コンストラクタ
 //
 ///////////////////////////////////////////////////////////////////////////////
 CObject2D::CObject2D()
@@ -85,10 +85,10 @@ CObject2D::CObject2D()
 	}
 }
 ///////////////////////////////////////////////////////////////////////////////
-//	関数名	: 
-//	戻り値	: 
-//	引数	: 
-//	説明	: 
+//	関数名	: CObject2D::~CObject2D()
+//	戻り値	: なし
+//	引数	: なし
+//	説明	: デストラクタ
 //
 ///////////////////////////////////////////////////////////////////////////////
 CObject2D::~CObject2D()
@@ -256,23 +256,19 @@ void CObject2D::Draw(void)
 	// 描画ここから
 	glBegin(GL_TRIANGLE_STRIP);
 
-	glColor4f(0xff, 0xff, 0xff, 0xff);	// 色
+	glColor4f(0xff, 0xff, 0xff, 0x01);	// 色
 
 	glTexCoord2f(0.0f, 0.0f);
-	glVertex2d(  - m_Size.x/2.0f,
-				 + m_Size.y/2.0f);		// 座標
+	glVertex2d(  -m_Size.x/2.0f, m_Size.y/2.0f);		// 座標
 
 	glTexCoord2f(1.0f, 0.0f);
-	glVertex2d(	 + m_Size.x / 2.0f,
-				 + m_Size.y / 2.0f);	// 座標
+	glVertex2d(	 m_Size.x / 2.0f, m_Size.y / 2.0f);	// 座標
 
 	glTexCoord2f(0.0f, 1.0f);
-	glVertex2d( - m_Size.x / 2.0f,
-				 - m_Size.y / 2.0f);	// 座標
+	glVertex2d( -m_Size.x / 2.0f, -m_Size.y / 2.0f);	// 座標
 
 	glTexCoord2f(1.0f, 1.0f);
-	glVertex2d(  + m_Size.x / 2.0f,
-				 - m_Size.y / 2.0f);	// 座標
+	glVertex2d( m_Size.x / 2.0f, -m_Size.y / 2.0f);	// 座標
 
 	// 描画ここまで
 	glEnd();
@@ -359,7 +355,7 @@ bool CObject2D::WritingTextureIndex(const char *pFilePath, TEXTURE_INDEX Index)
 //	関数名	: bool CObject2D::CollisionDetection(Vector3 *Position)
 //	戻り値	: 当たり true, 当ってない false
 //	引数	: 当たり判定する座標
-//	説明	: 四角形の当たり判定
+//	説明	: 指定した座標の四角形の当たり判定
 //
 ///////////////////////////////////////////////////////////////////////////////
 bool CObject2D::CollisionDetection(Vector3 *Position)
@@ -404,26 +400,26 @@ bool CObject2D::SphereAndSphereDetection(Vector3 PositionObj1, Vector3 SizeObj1,
 }
 ///////////////////////////////////////////////////////////////////////////////
 //	関数名	: void CObject2D::SetParameter(Vector3 *parameter)
-//	戻り値	: 
-//	引数	: 
-//	説明	: 
+//	戻り値	: なし
+//	引数	: パラメーターのタイプ, パラメーター
+//	説明	: パラメーターの変更をする。
 //
 ///////////////////////////////////////////////////////////////////////////////
 void CObject2D::SetParameter(PARAMETER_TYPE type, Vector3 *parameter)
 {
 	switch (type)
 	{
-		case POSITION:
+	case POSITION:	// 座標
 		{
 			m_Position = *parameter;
 			break;
 		}
-		case ROTATION:
+		case ROTATION:	// 回転
 		{
 			m_Rotation = *parameter;
 			break;
 		}
-		case SIZE:
+		case SIZE:	// サイズ
 		{
 			m_Size = *parameter;
 			break;
