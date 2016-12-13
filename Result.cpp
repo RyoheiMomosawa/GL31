@@ -100,7 +100,9 @@ void Result::Update()
 	m_pScene->UpdateAll();
 
 	// ƒ‚[ƒh‚ÌØ‚è‘Ö‚¦
-	if( Manager::GetKeyboard()->GetTrigger( DIK_RETURN ) && !m_bModeFlag )
+	if( //Manager::GetKeyboard()->GetTrigger( DIK_RETURN ) 
+		input::is_each_trigger(input::DECIDE) || input::is_each_trigger(input::PAUSE)
+		&& !m_bModeFlag)
 	{
 		Fade::Set( new Title );
 		m_bModeFlag = true;
