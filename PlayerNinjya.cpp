@@ -16,6 +16,7 @@
 
 // オブジェクト
 #include "Scene2DGL.h"
+#include "Shuriken.h"
 
 // システム
 #include "Manager.h"
@@ -130,7 +131,12 @@ void PlayerNinjya::Attack0()
 	//攻撃ボタン0
 	if(Manager::GetKeyboard()->GetTrigger(DIK_K))
 	{
-		MessageBox(nullptr, "手裏剣を飛ばす", "test", MB_OK);
+		//MessageBox(nullptr, "手裏剣を飛ばす", "test", MB_OK);
+		Shuriken *scene = Shuriken::Create();
+		scene->SetParam(&m_pScene->GetObject3D()->pos,SCENEPARAM_POS);
+		scene->SetParam(&Vector3(0,0,m_Forward_direction), SCENEPARAM_ROT);
+		scene->SetParam(&Vector3(10, 10, 0), SCENEPARAM_SIZE);
+		scene->SetTexture("data/TEXTURE/shuriken_left.tga");
 	}
 }
 
@@ -145,7 +151,7 @@ void PlayerNinjya::Attack1()
 	//攻撃ボタン1
 	if(Manager::GetKeyboard()->GetTrigger(DIK_L))
 	{
-		MessageBox(nullptr, "脇差し", "test", MB_OK);
+		//MessageBox(nullptr, "脇差し", "test", MB_OK);
 	}
 }
 
@@ -159,25 +165,25 @@ void PlayerNinjya::Move()
 
 	if(Manager::GetKeyboard()->GetPress(DIK_A))
 	{
-		m_Forward_direction = 3.14 * -0.5f;
+		m_Forward_direction = 0;
 		m_pScene->AddPos(-2, 0);
 	}
 
 	if(Manager::GetKeyboard()->GetPress(DIK_D))
 	{
-		m_Forward_direction = 3.14 * 0.5f;
+		m_Forward_direction = 180;
 		m_pScene->AddPos(2, 0);
 	}
 
 	if(Manager::GetKeyboard()->GetPress(DIK_W))
 	{
-		m_Forward_direction = 3.14 * 1.0f;
+		m_Forward_direction = 90;
 		m_pScene->AddPos(0, -2);
 	}
 
 	if(Manager::GetKeyboard()->GetPress(DIK_S))
 	{
-		m_Forward_direction = 3.14 * 0.0f;
+		m_Forward_direction = 270;
 		m_pScene->AddPos(0, 2);
 	}
 }

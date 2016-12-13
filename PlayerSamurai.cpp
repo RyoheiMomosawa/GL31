@@ -16,6 +16,7 @@
 
 // オブジェクト
 #include "Scene2DGL.h"
+#include "Arrow.h"	//あとで剣に変えてね
 
 // システム
 #include "Manager.h"
@@ -130,7 +131,14 @@ void PlayerSamurai::Attack0()
 	//攻撃ボタン0
 	if(Manager::GetKeyboard()->GetTrigger(DIK_K))
 	{
-		MessageBox(nullptr, "斬撃！！", "test", MB_OK);
+		//MessageBox(nullptr, "斬撃！！", "test", MB_OK);
+
+		//あとで剣に変えてね
+		Arrow *scene = Arrow::Create();
+		scene->SetParam(&m_pScene->GetObject3D()->pos, SCENEPARAM_POS);
+		scene->SetParam(&Vector3(0, 0, m_Forward_direction), SCENEPARAM_ROT);
+		scene->SetParam(&Vector3(5, 10, 0), SCENEPARAM_SIZE);
+		scene->SetTexture("data/TEXTURE/arrow.tga");
 	}
 }
 
@@ -157,27 +165,27 @@ void PlayerSamurai::Move()
 		return;
 	}
 
-	if(Manager::GetKeyboard()->GetPress(DIK_A))
+	if (Manager::GetKeyboard()->GetPress(DIK_A))
 	{
-		m_Forward_direction = 3.14 * -0.5f;
+		m_Forward_direction = 0;
 		m_pScene->AddPos(-2, 0);
 	}
 
-	if(Manager::GetKeyboard()->GetPress(DIK_D))
+	if (Manager::GetKeyboard()->GetPress(DIK_D))
 	{
-		m_Forward_direction = 3.14 * 0.5f;
+		m_Forward_direction = 180;
 		m_pScene->AddPos(2, 0);
 	}
 
-	if(Manager::GetKeyboard()->GetPress(DIK_W))
+	if (Manager::GetKeyboard()->GetPress(DIK_W))
 	{
-		m_Forward_direction = 3.14 * 1.0f;
+		m_Forward_direction = 90;
 		m_pScene->AddPos(0, -2);
 	}
 
-	if(Manager::GetKeyboard()->GetPress(DIK_S))
+	if (Manager::GetKeyboard()->GetPress(DIK_S))
 	{
-		m_Forward_direction = 3.14 * 0.0f;
+		m_Forward_direction = 270;
 		m_pScene->AddPos(0, 2);
 	}
 }

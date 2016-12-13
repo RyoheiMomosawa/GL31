@@ -76,10 +76,11 @@ void Arrow::Update()
 
 		return;
 	}
-	float rad = (m_Obj3d.rot.z - 90.0f) / 360.0f;
-	m_Obj3d.accPos = Vector3(cosf(rad*3.1415f * 2)*m_Force, sinf(rad*3.1415f * 2)*m_Force, 0);
+	float vec = m_Obj3d.rot.z / 360.0f;
 
-	m_Obj3d.pos += m_Obj3d.accPos;
+	m_Obj3d.accPos = Vector3(cosf(vec*3.1415f * 2)*m_Force, sinf(vec*3.1415f * 2)*m_Force, 0);
+
+	m_Obj3d.pos -= m_Obj3d.accPos;
 }
 
 void Arrow::Draw()
@@ -117,7 +118,7 @@ void Arrow::Draw()
 	glDisable(GL_LIGHTING);
 
 	glTranslatef(m_Obj3d.pos.x, m_Obj3d.pos.y, 0);
-	glRotatef(m_Obj3d.rot.z+m_Obj3d.rotMove.z, 0, 0, 1);
+	glRotatef(m_Obj3d.rot.z+m_Obj3d.rotMove.z-90.0f, 0, 0, 1);
 	//glTranslatef(0, 0, 0);
 	glScalef(1, 1, 1);
 
