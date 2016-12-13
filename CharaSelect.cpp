@@ -28,21 +28,23 @@ using namespace std;
 
 namespace
 {
-	static const string jobNameFilePass[] =
+	static const int JOB_NUM = 3;
+
+	static const string jobNameFilePass[JOB_NUM] =
 	{
 		"./data/TEXTURE/str_archer.tga",
 		"./data/TEXTURE/str_ninjya.tga",
 		"./data/TEXTURE/str_samurai.tga",
 	};
 
-	static const string xActNameFileNames[] =
+	static const string xActNameFileNames[JOB_NUM] =
 	{
 		"./data/TEXTURE/str_archer.tga",
 		"./data/TEXTURE/str_ninjya.tga",
 		"./data/TEXTURE/str_samurai.tga",
 	};
 
-	static const string aActNameFileNames[] =
+	static const string aActNameFileNames[JOB_NUM] =
 	{
 		"./data/TEXTURE/str_archer.tga",
 		"./data/TEXTURE/str_ninjya.tga",
@@ -133,6 +135,12 @@ void CharaSelect::Update()
 
 	m_pBg->UpdateAll();
 
+	switch(m_state)
+	{
+	case SELECT:	UpdateSelectCharactor(0), UpdateSelectCharactor(1), UpdateSelectCheck();	break;
+	case ASK:		UpdateAskToBattle();														break;
+	}
+
 	// モードの切り替え
 	if( //Manager::GetKeyboard()->GetTrigger( DIK_RETURN ) 
 		input::is_each_trigger(input::DECIDE) || input::is_each_trigger(input::PAUSE)
@@ -156,4 +164,125 @@ void CharaSelect::Draw()
 {
 	m_pBg->DrawAll();
 
+}
+
+void CharaSelect::UpdateSelectCharactor(int id)
+{
+	//下キー
+	if(input::is_trigger(DOWN, id))
+	{
+		//カーソルを下へ(循環型)
+		++m_selectId[id] %= JOB_NUM;
+
+		////カーソル移動音
+		//sound::play_se("data/se/ザ・マッチメイカァズ/cursor_select.wav", 1.0f, 0.625f);
+
+		//カーソルの移動　と　説明の変更
+		m_pJobName[id]->SetTexture(jobNameFilePass[m_selectId[id]].c_str());
+		m_pActName[id][X_ACT]->SetTexture(xActNameFileNames[m_selectId[id]].c_str());
+		m_pActName[id][A_ACT]->SetTexture(xActNameFileNames[m_selectId[id]].c_str());
+	}
+
+	//上キー
+	if(input::is_trigger(UP, id))
+	{
+		//カーソルを上へ(循環型)
+		m_selectId[id] = (m_selectId[id] + JOB_NUM - 1) % JOB_NUM;
+
+		////カーソル移動音
+		//sound::play_se("data/se/ザ・マッチメイカァズ/cursor_select.wav", 1.0f, 0.625f);
+
+		//カーソルの移動　と　説明の変更
+		m_pJobName[id]->SetTexture(jobNameFilePass[m_selectId[id]].c_str());
+		m_pActName[id][X_ACT]->SetTexture(xActNameFileNames[m_selectId[id]].c_str());
+		m_pActName[id][A_ACT]->SetTexture(xActNameFileNames[m_selectId[id]].c_str());
+	}
+
+	//決定ボタンが押されたら
+	if(input::is_trigger(DECIDE, id))
+	{
+		//決定フラグON　決定文字表示
+		m_isDecide[id] = true;
+		m_pDecide[id]->GetObject3D()->bDraw = true;
+	}
+
+	//キャンセルボタンが押されたら
+	if(input::is_trigger(CANSEL, id))
+	{
+		//決定フラグOFF　決定文字非表示
+		m_isDecide[id] = false;
+		m_pDecide[id]->GetObject3D()->bDraw = false;
+	}
+}
+
+void CharaSelect::UpdateSelectCheck()
+{
+	//両プレイヤー共に選択が終われば
+	if(m_isDecide[0] && m_isDecide[1])
+	{
+		m_state = State::ASK;
+
+		//勝負開始　確認画面を表示する
+		m_pDecideMask->GetObject3D()->bDraw		= true;
+		m_pAskMask->GetObject3D()->bDraw		= true;
+		m_pAskToStart->GetObject3D()->bDraw		= true;
+		m_pYes->GetObject3D()->bDraw			= true;
+		m_pNo->GetObject3D()->bDraw				= true;
+	}
+}
+
+void CharaSelect::UpdateAskToBattle()
+{
+	//決定ボタンが押されたら
+	if(input::is_each_trigger(DECIDE)
+		&& !m_bModeFlag)
+	{
+		if(m_isStartBattle)
+		{
+			Fade::Set(new Game);
+			m_bModeFlag = true;
+		}
+		else
+		{
+			//両プレイヤーとも　未決定状態に戻す
+			for(int id = 0; id < 2; ++id)
+			{
+				//決定フラグOFF　決定文字非表示
+				m_isDecide[id] = false;
+				m_pDecide[id]->GetObject3D()->bDraw = false;
+			}
+
+			//選択状態へ戻す
+			m_state = State::SELECT;
+
+			//勝負開始　確認画面を非表示に
+			m_pDecideMask->GetObject3D()->bDraw		= false;
+			m_pAskMask->GetObject3D()->bDraw		= false;
+			m_pAskToStart->GetObject3D()->bDraw		= false;
+			m_pYes->GetObject3D()->bDraw			= false;
+			m_pNo->GetObject3D()->bDraw				= false;
+		}
+	}
+
+	//キャンセルボタンが押されたら
+	if(input::is_each_trigger(CANSEL))
+	{
+		//両プレイヤーとも　未決定状態に戻す
+		for(int id = 0; id < 2; ++id)
+		{
+			//決定フラグOFF　決定文字非表示
+			m_isDecide[id] = false;
+			m_pDecide[id]->GetObject3D()->bDraw = false;
+		}
+
+		//選択状態へ戻す
+		m_state = State::SELECT;
+
+		//勝負開始　確認画面を非表示に
+		m_pDecideMask->GetObject3D()->bDraw		= false;
+		m_pAskMask->GetObject3D()->bDraw		= false;
+		m_pAskToStart->GetObject3D()->bDraw		= false;
+		m_pYes->GetObject3D()->bDraw			= false;
+		m_pNo->GetObject3D()->bDraw				= false;
+	}
 }
