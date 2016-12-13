@@ -20,6 +20,7 @@
 #include "wndproc.h"
 #include "Manager.h"
 #include "resource.h"
+#include "InputMng.h"
 
 #include <time.h>
 #include <tchar.h>
@@ -313,6 +314,8 @@ int Uninit()
 ******************************************************************************/
 void Update( void )
 {
+	input::update();
+
 	// ƒŒƒ“ƒ_ƒ‰
 	g_pManager->Update();
 

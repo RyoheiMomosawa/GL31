@@ -24,6 +24,32 @@
 #include "main.h"
 #include "Fade.h"
 
+using namespace std;
+
+namespace
+{
+	static const string jobNameFilePass[] =
+	{
+		"./data/TEXTURE/str_archer.tga",
+		"./data/TEXTURE/str_ninjya.tga",
+		"./data/TEXTURE/str_samurai.tga",
+	};
+
+	static const string xActNameFileNames[] =
+	{
+		"./data/TEXTURE/str_archer.tga",
+		"./data/TEXTURE/str_ninjya.tga",
+		"./data/TEXTURE/str_samurai.tga",
+	};
+
+	static const string aActNameFileNames[] =
+	{
+		"./data/TEXTURE/str_archer.tga",
+		"./data/TEXTURE/str_ninjya.tga",
+		"./data/TEXTURE/str_samurai.tga",
+	};
+}
+
 
 /******************************************************************************
 **	静的メンバ変数
@@ -108,11 +134,12 @@ void CharaSelect::Update()
 	m_pBg->UpdateAll();
 
 	// モードの切り替え
-	if( Manager::GetKeyboard()->GetTrigger( DIK_RETURN ) && !m_bModeFlag )
+	if( //Manager::GetKeyboard()->GetTrigger( DIK_RETURN ) 
+		input::is_each_trigger(input::DECIDE) || input::is_each_trigger(input::PAUSE)
+		&& !m_bModeFlag)
 	{
 		Fade::Set( new Game );
 		m_bModeFlag = true;
-			
 	}
 
 }
