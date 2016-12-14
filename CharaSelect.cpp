@@ -137,8 +137,8 @@ void CharaSelect::Update()
 
 	switch(m_state)
 	{
-	case SELECT:	UpdateSelectCharactor(0), UpdateSelectCharactor(1), UpdateSelectCheck();	break;
-	case ASK:		UpdateAskToBattle();														break;
+	case SELECT:	UpdateSelectCheck();	break;
+	case ASK:		UpdateAskToBattle();	break;
 	}
 
 	// モードの切り替え
@@ -166,10 +166,12 @@ void CharaSelect::Draw()
 
 }
 
+//キャラクターセレクト
+//引数　プレイヤーID
 void CharaSelect::UpdateSelectCharactor(int id)
 {
-	//下キー
-	if(input::is_trigger(DOWN, id))
+	//右キー
+	if(input::is_trigger(RIGHT, id))
 	{
 		//カーソルを下へ(循環型)
 		++m_selectId[id] %= JOB_NUM;
@@ -183,8 +185,8 @@ void CharaSelect::UpdateSelectCharactor(int id)
 		m_pActName[id][A_ACT]->SetTexture(xActNameFileNames[m_selectId[id]].c_str());
 	}
 
-	//上キー
-	if(input::is_trigger(UP, id))
+	//左キー
+	if(input::is_trigger(LEFT, id))
 	{
 		//カーソルを上へ(循環型)
 		m_selectId[id] = (m_selectId[id] + JOB_NUM - 1) % JOB_NUM;
@@ -215,8 +217,13 @@ void CharaSelect::UpdateSelectCharactor(int id)
 	}
 }
 
+//セレクトのチェック
 void CharaSelect::UpdateSelectCheck()
 {
+	//両プレイヤーのセレクト処理
+	UpdateSelectCharactor(0);
+	UpdateSelectCharactor(1);
+
 	//両プレイヤー共に選択が終われば
 	if(m_isDecide[0] && m_isDecide[1])
 	{
@@ -231,12 +238,14 @@ void CharaSelect::UpdateSelectCheck()
 	}
 }
 
+//バトル移行確認
 void CharaSelect::UpdateAskToBattle()
 {
 	//決定ボタンが押されたら
 	if(input::is_each_trigger(DECIDE)
 		&& !m_bModeFlag)
 	{
+		//バトル開始OKなら　ゲームへ
 		if(m_isStartBattle)
 		{
 			Fade::Set(new Game);
