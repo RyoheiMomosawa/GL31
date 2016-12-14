@@ -120,7 +120,7 @@ void CObject2D::Init(Vector3 *Position, Vector3 *Size, TEXTURE_INDEX Texture)
 	m_Position = *Position;
 	m_Size = *Size;
 	m_UseTextureIndex = Texture;
-	m_Rotation = Vector3(0.0f, 0.0f, 90.0f);
+	m_Rotation = Vector3(0.0f, 0.0f, 0.0f);
 }
 ///////////////////////////////////////////////////////////////////////////////
 //	関数名	: void CObject2D::Uninit(void)
@@ -256,7 +256,7 @@ void CObject2D::Draw(void)
 	// 描画ここから
 	glBegin(GL_TRIANGLE_STRIP);
 
-	glColor4f(0xff, 0xff, 0xff, 0x01);	// 色
+	glColor4f(0xff, 0xff, 0xff, 0xff);	// 色
 
 	glTexCoord2f(0.0f, 0.0f);
 	glVertex2d(  -m_Size.x/2.0f, m_Size.y/2.0f);		// 座標
@@ -424,6 +424,36 @@ void CObject2D::SetParameter(PARAMETER_TYPE type, Vector3 *parameter)
 			m_Size = *parameter;
 			break;
 		}
+
+	}
+}
+///////////////////////////////////////////////////////////////////////////////
+//	関数名	: VECTOR3 CObject2D::GetParameter(PARAMETER_TYPE type)
+//	戻り値	: 
+//	引数	: 
+//	説明	: 
+//
+///////////////////////////////////////////////////////////////////////////////
+// パラメーター取得
+VECTOR3 CObject2D::GetParameter(PARAMETER_TYPE type)
+{
+	switch (type)
+	{
+	case POSITION:	// 座標
+	{
+		return m_Position;
+		break;
+	}
+	case ROTATION:	// 回転
+	{
+		return m_Rotation;
+		break;
+	}
+	case SIZE:	// サイズ
+	{
+		return m_Size;
+		break;
+	}
 
 	}
 }
