@@ -51,7 +51,7 @@ SceneGL::SceneGL( int Priority )
 	m_Obj3d.height = 0.0f;
 	m_Obj3d.depth = 0.0f;
 	m_Obj3d.length2D = m_Obj3d.length3D = 0.0f;
-	m_Obj3d.bUse = m_Obj3d.bUpdate = m_Obj3d.bDraw = false;
+	m_Obj3d.bUse = m_Obj3d.bUpdate = m_Obj3d.bDraw = true;
 	m_Obj3d.anim.fPattern_X = m_Obj3d.anim.fPattern_Y = 1.0f;
 	m_Obj3d.anim.fAnimWidth = m_Obj3d.anim.fAnimHeight = 1.0f;
 	m_Obj3d.anim.nChangeTimming = 1;

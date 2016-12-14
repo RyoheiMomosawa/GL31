@@ -19,6 +19,8 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="alut.h" />
+    <ClInclude Include="Arrow.h" />
     <ClInclude Include="CharaSelect.h" />
     <ClInclude Include="Color.h" />
     <ClInclude Include="Dialog.h" />
@@ -27,9 +29,11 @@
     <ClInclude Include="DirectInput.h" />
     <ClInclude Include="Fade.h" />
     <ClInclude Include="Game.h" />
+    <ClInclude Include="HPbar.h" />
+    <ClInclude Include="HPbarFrame.h" />
     <ClInclude Include="ImageTGA.h" />
     <ClInclude Include="Input.h" />
-    <ClInclude Include="kouno.h" />
+    <ClInclude Include="InputMng.h" />
     <ClInclude Include="main.h" />
     <ClInclude Include="Manager.h" />
     <ClInclude Include="Mode.h" />
@@ -46,15 +50,20 @@
     <ClInclude Include="Scene2DGL.h" />
     <ClInclude Include="SceneGL.h" />
     <ClInclude Include="SceneGLTimer.h" />
+    <ClInclude Include="Shuriken.h" />
     <ClInclude Include="SoundAL.h" />
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="Texture2DGL.h" />
     <ClInclude Include="Title.h" />
+    <ClInclude Include="UtlCommonLib.h" />
+    <ClInclude Include="UtlMath.h" />
     <ClInclude Include="Vector3.h" />
     <ClInclude Include="wndproc.h" />
+    <ClInclude Include="WndProcDbgManager.h" />
     <ClInclude Include="xorshift.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Arrow.cpp" />
     <ClCompile Include="CharaSelect.cpp" />
     <ClCompile Include="Color.cpp" />
     <ClCompile Include="Dialog.cpp" />
@@ -63,9 +72,11 @@
     <ClCompile Include="DirectInput.cpp" />
     <ClCompile Include="Fade.cpp" />
     <ClCompile Include="Game.cpp" />
+    <ClCompile Include="HPbar.cpp" />
+    <ClCompile Include="HPbarFrame.cpp" />
     <ClCompile Include="ImageTGA.cpp" />
     <ClCompile Include="Input.cpp" />
-    <ClCompile Include="kouno.cpp" />
+    <ClCompile Include="InputMng.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Manager.cpp" />
     <ClCompile Include="Mode.cpp" />
@@ -80,12 +91,17 @@
     <ClCompile Include="Scene2DGL.cpp" />
     <ClCompile Include="SceneGL.cpp" />
     <ClCompile Include="SceneGLTimer.cpp" />
+    <ClCompile Include="Shuriken.cpp" />
     <ClCompile Include="SoundAL.cpp" />
     <ClCompile Include="Sprite.cpp" />
+    <ClCompile Include="testMoMO.cpp" />
     <ClCompile Include="Texture2DGL.cpp" />
     <ClCompile Include="Title.cpp" />
+    <ClCompile Include="UtlCommonLib.cpp" />
+    <ClCompile Include="UtlMath.cpp" />
     <ClCompile Include="Vector3.cpp" />
     <ClCompile Include="wndproc.cpp" />
+    <ClCompile Include="WndProcDbgManager.cpp" />
     <ClCompile Include="xorshift.cpp" />
   </ItemGroup>
   <ItemGroup>
