@@ -189,7 +189,7 @@ void SceneGL::UpdateAll()
 		while( scene != NULL )
 		{
 			next = scene->m_Next;
-			next->GetObject3D()->bUse && next->GetObject3D()->bUpdate ? scene->Update() : false;
+			scene->GetObject3D()->bUse && scene->GetObject3D()->bUpdate ? scene->Update() : false;
 			scene = next;
 
 		}
@@ -216,7 +216,6 @@ void SceneGL::DrawAll()
 		while( scene != NULL )
 		{
 			scene->GetObject3D()->bUse && scene->GetObject3D()->bUpdate ? scene->Draw() : false;
-			scene->Draw();
 			scene = scene->m_Next;
 
 		}
